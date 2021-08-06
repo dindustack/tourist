@@ -3,7 +3,9 @@ import dbConnect from 'config/dbConnect'
 
 import { updateRoomDetails } from 'controllers/roomControllers'
 
-const handler = nc();
+import onError from 'middlewares/error'
+
+const handler = nc({ onError });
 
 dbConnect();
 
