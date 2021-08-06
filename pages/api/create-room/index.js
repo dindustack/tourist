@@ -1,12 +1,12 @@
 import nc from 'next-connect'
 import dbConnect from 'config/dbConnect'
 
-import { fetchAllRooms } from 'controllers/roomControllers'
+import { createNewRoom } from 'controllers/roomControllers'
 
 const handler = nc();
 
 dbConnect();
 
-handler.get(fetchAllRooms)
+handler.post(createNewRoom)
 
 export default handler;

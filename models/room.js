@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const roomSchema = new mongoose.Schema({
     name: {
@@ -130,7 +130,7 @@ const roomSchema = new mongoose.Schema({
     ],
     user: {
         type: mongoose.Schema.ObjectId,
-        required: true,
+        required: false,
         ref: 'User'
     },
     createdAt: {
@@ -140,4 +140,4 @@ const roomSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model.Room || mongoose.model('Room', roomSchema);
+module.exports = mongoose.models.Room || mongoose.model('Room', roomSchema);
