@@ -5,9 +5,11 @@ const fetchAllRooms = async (req, res) => {
   try {
 
     const rooms = await Room.find();
+    const numberOfRooms = await Room.countDocuments();
 
     res.status(200).json({
       success: true,
+      numberOfRooms,
       rooms
     });
 
@@ -96,7 +98,7 @@ const updateRoomDetails = async (req, res) => {
 // Update Room Details => /api/delete-room/:id
 const deleteRoom = async (req, res) => {
   try {
-    const room = await Room.findByIdAndDelete(req.query.id)
+    const room = await Room.findById(req.query.id)
 
     if (!room) {
       res.status(404).json({
@@ -104,6 +106,8 @@ const deleteRoom = async (req, res) => {
         error: 'Room not found with this ID',
       });
     }
+
+    await room.remove()
 
     res.status(200).json({
       success: true,
