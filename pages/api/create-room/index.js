@@ -3,7 +3,7 @@ import dbConnect from 'config/dbConnect'
 
 import { createNewRoom } from 'controllers/roomControllers'
 
-import onError from 'middlewares/error'
+import onError from '../../../middlewares/error'
 
 const handler = nc({ onError });
 
